@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './question.dart';
+import './answer.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +22,7 @@ class _MyAppState extends State<MyApp> {
     'What\'s your favorite music genere?'
   ];
 
-  void answerQuestion() {
+  void _answerQuestion() {
     // print("Ohh!!!, Just touched me");
     setState(() {
       index++;
@@ -57,35 +58,10 @@ class _MyAppState extends State<MyApp> {
                       const EdgeInsets.symmetric(vertical: 40, horizontal: 5),
                   child: Column(
                     children: <Widget>[
-                      ElevatedButton(
-                        style: btnStyle,
-                        onPressed: answerQuestion,
-                        child: const Text("Option-1"),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      ElevatedButton(
-                        style: btnStyle,
-                        onPressed: answerQuestion,
-                        child: const Text("Option-2"),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      ElevatedButton(
-                        style: btnStyle,
-                        onPressed: answerQuestion,
-                        child: const Text("Option-3"),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      ElevatedButton(
-                        style: btnStyle,
-                        onPressed: answerQuestion,
-                        child: const Text("Option-4"),
-                      ),
+                      Answer(_answerQuestion),
+                      Answer(_answerQuestion),
+                      Answer(_answerQuestion),
+                      Answer(_answerQuestion),
                     ],
                   ),
                 ),

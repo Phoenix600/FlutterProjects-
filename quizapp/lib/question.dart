@@ -7,7 +7,7 @@ class Question extends StatelessWidget {
   TextStyle questionStyle = const TextStyle(fontSize: 20, color: Colors.white);
   TextAlign alignText = TextAlign.left;
 
-  late String questionText;
+  String questionText;
 
   // Constructor with positional argument
   Question(this.questionText, {super.key});
