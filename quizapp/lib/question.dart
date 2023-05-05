@@ -1,24 +1,28 @@
 import 'package:flutter/material.dart';
 
 class Question extends StatelessWidget {
-  // Declare properties here
+  // Data Memebers
+  final String questionText;
+  // By declaring final you avoid re-initilization of string value
 
-  // Styling Purpose of the text
-  TextStyle questionStyle = const TextStyle(fontSize: 20, color: Colors.white);
-  TextAlign alignText = TextAlign.left;
+  // Member Functions
 
-  String questionText;
-
-  // Constructor with positional argument
-  Question(this.questionText, {super.key});
+  // Constructor // Recieves an external data
+  const Question(this.questionText, {super.key});
 
   // Build Method
   @override
   Widget build(BuildContext context) {
-    return Text(
-      questionText,
-      textAlign: alignText,
-      style: questionStyle,
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.all(10),
+      child: Text(
+        questionText,
+        style: const TextStyle(
+          fontSize: 20,
+        ),
+        textAlign: TextAlign.center,
+      ),
     );
   }
 }

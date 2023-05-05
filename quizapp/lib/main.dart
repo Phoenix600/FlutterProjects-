@@ -1,73 +1,62 @@
 import 'package:flutter/material.dart';
+
+// Added by the user
 import './question.dart';
 import './answer.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
-  const MyApp({super.key});
-
+  // createState method
   @override
   State<MyApp> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
-  // Declare properties here
-  final List _questions = <String>[
-    "Whats your favorite color?",
-    'What\'s your favorite animal?',
-    'What\'s your favorite dish?',
-    'What\'s your favorite music genere?'
+  // Data Members
+  int _questionIndex = 0;
+
+  // final List _questions = <String>[
+  //   'What\'s your favorite color?',
+  //   'What\'s your favorite animal?',
+  // ];
+
+  final List _questions = <Map>[
+    {
+      'questionText': 'What\'s your favourite animal ? ',
+      'answers': ['Tiger', 'Lion', 'Hippo', 'Cheetah'],
+    },
+    {
+      'questionText': 'What\'s your favorite food?',
+      'answers': ["Pizza", "Panner Tandori", "Chiken Tandori", "Biryani"],
+    },
+    {
+      'questionText': 'Who is your favorite YouTuber?',
+      'answers': ["Harris", "Raj", "Aman", "Kunal"],
+    },
   ];
 
-  void _answerQuestion() {
-    // print("Ohh!!!, Just touched me");
+  // Member Functions
+  void _answerQuestions() {
     setState(() {
-      index++;
-      index = index % 4;
+      _questionIndex++;
+      _questionIndex %= 3;
     });
   }
-
-  // Index variables
-  int index = 0;
-  // Style
-  TextStyle questionStyle = const TextStyle(fontSize: 20, color: Colors.white);
-  ButtonStyle btnStyle = ElevatedButton.styleFrom(
-    backgroundColor: const Color(0xffffd500),
-  );
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: const Color.fromARGB(255, 10, 10, 10),
-        body: SafeArea(
-          child: Container(
-            width: double.infinity,
-            alignment: Alignment.center,
-            margin: const EdgeInsets.all(10),
-            child: Column(
-              // mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Center(child: Question(_questions.elementAt(index))),
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(vertical: 40, horizontal: 5),
-                  child: Column(
-                    children: <Widget>[
-                      Answer(_answerQuestion),
-                      Answer(_answerQuestion),
-                      Answer(_answerQuestion),
-                      Answer(_answerQuestion),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
+        body: Column(
+          children: <Widget>[
+            Question(_questions[_questionIndex]['questionText']),
+            ...(_questions[_questionIndex]['answers'] as List<String>)
+                .map((answerText) {
+              return Answer(_answerQuestions, answerText);
+            }).toList(),
+          ],
         ),
       ),
     );
