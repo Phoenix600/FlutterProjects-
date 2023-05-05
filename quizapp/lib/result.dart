@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class EndScreen extends StatelessWidget {
+class Result extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -9,6 +9,8 @@ class EndScreen extends StatelessWidget {
         "You Did It Friend!",
         style: TextStyle(
           fontSize: 34,
+          fontWeight: FontWeight.w900,
+          color: Colors.deepOrange,
         ),
       ),
     );

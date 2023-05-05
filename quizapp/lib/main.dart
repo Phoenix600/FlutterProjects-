@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 // Added by the user
 import './question.dart';
 import './answer.dart';
-import './endscreen.dart';
+import 'result.dart';
 
 void main() => runApp(const MyApp());
 
@@ -63,7 +63,7 @@ class _MyAppState extends State<MyApp> {
                   }).toList(),
                 ],
               )
-            : EndScreen(),
+            : Result(),
       ),
     );
   }
