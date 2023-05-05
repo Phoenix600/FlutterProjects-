@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 // Added by the user
 import './question.dart';
 import './answer.dart';
+import './endscreen.dart';
 
 void main() => runApp(const MyApp());
 
@@ -23,7 +24,7 @@ class _MyAppState extends State<MyApp> {
   //   'What\'s your favorite animal?',
   // ];
 
-  final List _questions = <Map>[
+  final List<Map> _questions = const <Map>[
     {
       'questionText': 'What\'s your favourite animal ? ',
       'answers': ['Tiger', 'Lion', 'Hippo', 'Cheetah'],
@@ -41,8 +42,10 @@ class _MyAppState extends State<MyApp> {
   // Member Functions
   void _answerQuestions() {
     setState(() {
-      _questionIndex++;
-      _questionIndex %= 3;
+      if (_questionIndex < _questions.length) {
+        _questionIndex++;
+        // _questionIndex %= 3;
+      }
     });
   }
 
@@ -51,14 +54,16 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Column(
-          children: <Widget>[
-            Question(_questions[_questionIndex]['questionText']),
-            ...(_questions[_questionIndex]['answers']).map((answerText) {
-              return Answer(_answerQuestions, answerText);
-            }).toList(),
-          ],
-        ),
+        body: _questionIndex < _questions.length
+            ? Column(
+                children: <Widget>[
+                  Question(_questions[_questionIndex]['questionText']),
+                  ...(_questions[_questionIndex]['answers']).map((answerText) {
+                    return Answer(_answerQuestions, answerText);
+                  }).toList(),
+                ],
+              )
+            : EndScreen(),
       ),
     );
   }
