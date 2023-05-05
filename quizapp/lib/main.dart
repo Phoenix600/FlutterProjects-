@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import './question.dart';
 import './answer.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
   // createState method
   @override
   State<MyApp> createState() => _MyAppState();
