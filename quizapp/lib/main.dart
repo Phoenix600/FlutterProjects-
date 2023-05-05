@@ -52,8 +52,7 @@ class _MyAppState extends State<MyApp> {
         body: Column(
           children: <Widget>[
             Question(_questions[_questionIndex]['questionText']),
-            ...(_questions[_questionIndex]['answers'] as List<String>)
-                .map((answerText) {
+            ...(_questions[_questionIndex]['answers']).map((answerText) {
               return Answer(_answerQuestions, answerText);
             }).toList(),
           ],
